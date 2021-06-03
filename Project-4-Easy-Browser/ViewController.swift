@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     
     var webView : WKWebView!
     var progressView : UIProgressView!
-    var websites = ["apple.com", "hackingwithswift.com"]
+    var websites = ["google.com", "hackingwithswift.com"]
     
     
     override func loadView() {
@@ -73,6 +73,12 @@ class ViewController: UIViewController {
         }
     }
     
+    func showAlert() {
+        let ac = UIAlertController(title: "The site you are trying to reach is blocked", message: nil, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+        present(ac, animated: true, completion: nil)
+    }
+    
 }
 
 extension ViewController: WKNavigationDelegate {
@@ -95,5 +101,6 @@ extension ViewController: WKNavigationDelegate {
         }
         
         decisionHandler(.cancel)
+        showAlert()
     }
 }
